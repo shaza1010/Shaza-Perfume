@@ -1,0 +1,376 @@
+/*---------------------------------------------MAIN AND PAGES---------------------------------------------*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+:root {
+    --main_pading: 20px;
+    --main_color: #d1a395;
+    --secondary_color: white;
+    --header_font: 'Prata', serif;
+    --paragraph_font: 'Radley', serif;
+    --font_size: 1.3em;
+}
+
+#about,
+#shop,
+#reviews {
+    height: 100%;
+    background-color: #1d1d1d;
+    padding: 6vw;
+    display: grid;
+    border-top: 3px double #79564E;
+}
+
+#home {
+    min-height: 100%;
+    overflow: auto;
+    position: relative;
+    display: grid;
+    grid-template-rows: 40px auto;
+}
+
+#about {
+    grid-template: auto 2fr auto / 1fr 1fr;
+}
+
+#shop {
+    grid-template: min-content 1fr / 1fr 1fr 1fr;
+}
+#reviews {
+    grid-template: min-content 1fr / 0.6fr 1fr;
+    align-items: center;
+}
+
+
+
+/*---------------------------------------------navigaion---------------------------------------------*/
+ul {
+    padding: 10px;
+    background-color: transparent;
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: space-evenly;
+    height: 40px;
+
+}
+
+li {
+    display: inline-block;
+    font-family: var(--header_font);
+    font-size: 20px;
+}
+
+li::before {
+    content: "|";
+    color: var(--secondary_color);
+    margin-right: 10px;
+    margin-bottom: 2px;
+    font-size: var(--font_size);
+}
+
+li a {
+    color: var(--secondary_color);
+    text-decoration: none;
+}
+
+/*---------------------------------------------Home page---------------------------------------------*/
+
+
+#home::before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-image: url(Perfume_Mockup_v01.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5);
+    height: 100%;
+    width: 100%;
+}
+
+#home::after {
+    content: "➤";
+    color: black;
+    transform: rotate(90deg);
+    background-color: var(--main_color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home_text {
+    color: var(--secondary_color);
+    text-align: center;
+    margin: auto;
+}
+
+#home_text h1 {
+    font-family: 'Briliantti', sans-serif;
+    font-size: 8vw;
+    margin-bottom: -40px;
+    filter: drop-shadow(rgba(255, 242, 242, 0.95) 0em 0em 0.0125751em)
+            drop-shadow(rgba(255, 255, 255, 0.75) 0em 0em 0.0628756em)
+            drop-shadow(rgba(255, 255, 255, 0.44) 0em 0em 0.188627em);
+}
+
+span#slogan {
+    font-family: var(--header_font);
+    font-weight: 600;
+    letter-spacing: 8px;
+    font-size: 1vmin;
+}
+
+/*---------------------------------------------About page---------------------------------------------*/
+h2 {
+    color: var(--main_color);
+    font-family: var(--header_font);
+    grid-area: 1 / 1;
+    font-size: 2.5em;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+p {
+    color: var(--secondary_color);
+    font-family: var(--paragraph_font);
+    font-size: var(--font_size);
+    padding-right: 50px;
+    margin-top: 15px;
+    overflow: auto;
+}
+.aboout-des{
+    grid-area: 2 / 1;
+}
+
+.icons {
+    grid-area: 3 / 1;
+    align-self: center;
+}
+
+.img {
+    grid-area: 1 / 2 / 4 / 2;
+}
+
+.icons img {
+    height: 30px;
+    margin: 10px;
+}
+
+.img img {
+    width: 33vw;
+    height: 33vw;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin-left: 25%;
+    filter: drop-shadow(3mm 3mm 5mm rgba(0, 0, 0, 0.616));
+}
+
+/*---------------------------------------------Shop page---------------------------------------------*/
+
+#shop h2 {
+    grid-area: 1 / 1 / 1 / 4;
+}
+
+.card-container {
+    width: 85%;
+    perspective: 1000px;
+    margin: 0 auto;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    border: 0.1px solid transparent;
+}
+
+.card-container:hover .card {
+    transform: rotateY(-180deg);
+}
+
+.front-card,
+.back-card {
+    border-radius: 15px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #79564E;
+    backdrop-filter: blur(5px);
+    filter: drop-shadow(3mm 3mm 5mm rgba(0, 0, 0, 0.616));
+}
+
+.back-card {
+    transform: rotateY(180deg);
+    padding: var(--main_pading);
+}
+
+.price-box {
+    background-color: var(--main_color);
+    width: 100%;
+    height: 45%;
+    border-radius: 30px 30px 15px 15px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 1.5fr repeat(3, 0.5fr) 1fr;
+}
+
+.prize, .tax {
+    font-weight: bold;
+    font-size: var(--font_size);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.p-name {
+    font-size: 30px;
+    font-family: var(--paragraph_font);
+}
+
+.back-card .p-name {
+    color: var(--secondary_color);
+    text-decoration: underline var(--secondary_color);
+}
+
+.tax {
+    font-weight: lighter;
+}
+
+.img-box {
+    height: 55%;
+    display: flex;
+    justify-content: center;
+}
+
+.card-img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+}
+
+form {
+    margin-top: 15px;
+    display: grid;
+    grid-template: 0.5fr 2fr 0.5fr / 1fr 1fr 1fr;
+    height: 90%;
+    align-items: center;
+}
+
+lable {
+    color: var(--secondary_color);
+    font-size: var(--font_size);
+    font-family: var(--paragraph_font);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+input[type="radio"] {
+    display: grid;
+    appearance: none;
+    width: 1.8em;
+    height: 1.8em;
+    margin-top: 3px;
+    border: 2px solid #1d1d1dcc;
+    border-radius: 50%;
+    align-items: center;
+    justify-items: center;
+}
+
+input[type="radio"]::before {
+    content: "";
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: var(--main_color);
+}
+
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+.chose-size {
+    grid-area: span 1 / span 3;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.product-desc {
+    grid-area: span 1/ span 3;
+}
+
+.buy-button {
+    grid-area: span 1/ span 3;
+    justify-self: center;
+    height: 65%;
+    width: 50%;
+    background-color: var(--main_color);
+    border: none;
+    border-radius: 20px;
+    font-family: sans-serif;
+    font-weight: 900;
+    font-size: var(--font_size);
+    cursor: pointer;
+}
+
+/* ---------------------------------------------Reviews Page--------------------------------------------- */
+.phrase{
+    grid-area: 2 / 1 / 3 / 2;
+    margin-bottom: 20%;
+}
+.pink{
+    color: var(--main_color);
+}
+.cos-reviews{
+    grid-area: 2 / 2 / 3 / 3;
+    display: grid;
+    grid-template: 1fr 1fr 1fr / auto auto;
+    column-gap: 60px;
+    row-gap: 30px;
+    align-items: center;
+}
+.person{
+    color: var(--main_color);
+    font-family: var(--header_font);
+}
+.reviwes{
+    padding: 0;
+}
+
+/* ---------------------------------------------Footer--------------------------------------------- */
+footer{
+    height: 5%;
+    background-color: #141414;
+    color: var(--main_color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--header_font);
+}
+footer a{
+    color: inherit;
+    text-decoration: none;
+}
